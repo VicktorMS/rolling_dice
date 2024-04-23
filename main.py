@@ -1,20 +1,22 @@
+import numpy as np
 from die import Die
-from die_rolls import sum_die_rolls
+from die_rolls import sum_die_rolls, multiplication_die_rolls
 
 import pygal
 
 
 def main():
-    die_list = [Die(), Die(), Die()]
-    rolls = 5000
+    die_list = [Die(), Die()]
+    rolls = 15000
 
     frequency = sum_die_rolls(rolls=rolls, dies=die_list)
-
 
     hist = pygal.Bar()
     hist.title = f"Results of rolling a D12 and a D12 {rolls} times."
 
-    max_result = sum([die.num_sides for die in die_list])
+    dice_sides = np.array([die.num_sides for die in die_list])
+    max_result = np.sum(dice_sides)
+    
     hist.x_labels = list(range(len(die_list), max_result + 1))
 
     hist.x_title = "Result"

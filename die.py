@@ -7,9 +7,4 @@ class Die():
 
     def roll(self):
         return randint(1, self.num_sides)
-    # def roll(self, rolls=1):
-    #     results = []
-    #     for _ in range(rolls):
-    #         results.append(randint(1, self.num_sides))
-    #     return results
-    
+  
